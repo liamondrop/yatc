@@ -1,0 +1,6 @@
+*.pyc
+*.db
+venv
+.webassets-cache
+env.py
+styles.min.css

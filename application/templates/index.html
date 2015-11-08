@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitter Timeline Client</title>
+  {% assets "css_all" %}
+  <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}">
+  {% endassets %}
+</head>
+<body>
+  <header class="navbar navbar-default navbar-static-top" id="top" role="banner">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="/" class="navbar-brand">Twitter Timeline Client</a>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-info" role="alert">{{ message }}</div>
+    {% endfor %}
+
+    {% block body %}{% endblock %}
+  </div>
+</body>
+</html>
+
