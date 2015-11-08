@@ -5,3 +5,4 @@ venv
 env.py
 styles.min.css
 node_modules
+spec.bundle.js
