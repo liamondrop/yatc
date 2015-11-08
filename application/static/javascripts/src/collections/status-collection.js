@@ -1,22 +1,27 @@
-import {isObject, isString} from 'underscore';
+import {isObject, isString, isEmpty, extend} from 'underscore';
 import {Collection} from 'backbone';
 
 const StatusCollection = Collection.extend({
-  urlRoot: '/statuses',
-
   url() {
-    return `${this.urlRoot}/${this.props.screenName}`;
+    const {props} = this;
+    if (!isObject(props) ||
+        isEmpty(props.screenName) ||
+        !isString(props.screenName)) {
+      throw "StatusCollection requires a screenName property to be set before it can fetch"
+    }
+    return `/statuses/${props.screenName}`;
   },
 
   parse(data) {
     return data.statuses;
   },
 
-  initialize(props) {
-    if (!isObject(props) || !isString(props.screenName)) {
-      throw "StatusCollection requires a screenName property to be passed at instantiation."
-    }
-    this.props = props;
+  initialize() {
+    this.props = {};
+  },
+
+  setProp(key, value) {
+    this.props[key] = value;
   }
 });
 
