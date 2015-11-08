@@ -4,3 +4,4 @@ venv
 .webassets-cache
 env.py
 styles.min.css
+node_modules
