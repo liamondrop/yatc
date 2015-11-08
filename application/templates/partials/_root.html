@@ -1,4 +1,55 @@
 {% extends "index.html" %}
 {% block body %}
-<div id="root">ROOT</div>
+<div id="root" class="row">
+  <div id="user-lookup" class="col-sidebar">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form>
+          <div class="form-group no-margin">
+            <label class="sr-only" for="screen-name">User Lookup</label>
+            <div class="input-group">
+              <input name="screen-name" type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Search</button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="status-filter" class="col-sidebar">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <form>
+          <div class="form-group no-margin">
+            <label class="sr-only" for="screen-name">Status Filter</label>
+            <div class="input-group">
+              <input name="screen-name-lookup" type="text" class="form-control" placeholder="Filter statuses...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Filter</button>
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="timeline" class="col-main">
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          Basic panel example
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          Basic panel example
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
