@@ -7,8 +7,7 @@ app.debug = True
 
 # initialize Twitter client
 from birdy.twitter import AppClient
-CONSUMER_KEY = 'Cx8hscIVCaacqzYjWw5NAS5n6'
-CONSUMER_SECRET = 'fFsCwLr1ylxsKS37S7Z4QpwgH8322p3mjnAUOSsPXAwrI8ELNI'
+from env import CONSUMER_KEY, CONSUMER_SECRET
 client = AppClient(CONSUMER_KEY, CONSUMER_SECRET)
 token = client.get_access_token()
 
@@ -20,5 +19,5 @@ css = Bundle('stylesheets/styles.scss',
     filters='pyscss', output='stylesheets/styles.min.css')
 assets.register('css_all', css)
 
-# setup views
+# initialize views / route listeners
 from application import views
