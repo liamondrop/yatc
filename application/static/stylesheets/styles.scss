@@ -6,3 +6,6 @@ $line-height-base: 1.42858 !default;           // correct for poor decimal preci
 
 /* useful column aliases */
 @import "column_aliases";
+
+/* useful common utility classes */
+@import "common_utils";
