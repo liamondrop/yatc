@@ -36,3 +36,9 @@ def normalize_statuses(statuses=[]):
              'screen_name': status.user.screen_name,
              'profile_image_url': status.user.profile_image_url,
              'text': status.text} for status in statuses]
+
+@app.route('/test')
+def test():
+    """run Jasmine specs in the browser"""
+
+    return render_template('partials/_specs.html')
