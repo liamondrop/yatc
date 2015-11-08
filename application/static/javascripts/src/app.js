@@ -1,12 +1,15 @@
 import {StatusCollection} from './collections';
-import {StatusView} from './views';
+import {UserLookupView} from './views';
 
-window.sc = new StatusCollection()
-window.sc.reset([
-  {id: 1, status: 'This is status 1'},
-  {id: 2, status: 'This is status 2'}
-]);
+const app = {
+  init() {
+    this.statuses = new StatusCollection();
+    this.userLookup = new UserLookupView({
+      el: '#user-lookup',
+      app: this
+    });
+    return this;
+  }
+};
 
-window.sv = new StatusView({
-  el: '#root'
-});
+window.app = app.init();
