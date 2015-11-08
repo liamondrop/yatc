@@ -1,0 +1,9 @@
+.col-sidebar {
+  @extend .col-xs-6;
+  @extend .col-xs-offset-3;
+}
+
+.col-main {
+  @extend .col-xs-6;
+  @extend .col-xs-offset-3;
+}
