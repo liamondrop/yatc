@@ -36,6 +36,7 @@ This does not, however, appear to be a problem for the purposes of this exercise
 * The app should hopefully work out of the box without rebuilding, but if you should need to rebuild, you can simply issue a `npm start` command at the top of the `javascripts` directory (You will need npm installed to pull down the dependencies and whatnot).
 
 ## TODO
-* Improve test coverage
+* Improve test coverage.
+* Properly handle HTTP errors in the browser.
 * Persist tweets to a database and implement features like paging and marking tweets as "Read".
 * Investigate Twitter's streaming protocol as well as pushing updates to the browser via Websockets.
