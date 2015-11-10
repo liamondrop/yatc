@@ -57,13 +57,13 @@ describe('StatusCollection', function () {
         const actual = model.keys();
         const expected = [
           "created_at",
+          "created_at_nice",
           "id",
           "name",
           "profile_image_url",
           "retweet_count",
           "screen_name",
           "text",
-          "created_at_local",
           "parsed_text"
         ];
         expect(actual).toEqual(expected);
