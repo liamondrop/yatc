@@ -34,3 +34,8 @@ This does not, however, appear to be a problem for the purposes of this exercise
 * The JavaScript is written in ES2015 syntax using ES2015-style imports/exports.
 * Node package manager is used to manage the dependencies and Browserify/Babelify were used to transpile to ES5 syntax and bundle all the files together.
 * The app should hopefully work out of the box without rebuilding, but if you should need to rebuild, you can simply issue a `npm start` command at the top of the `javascripts` directory (You will need npm installed to pull down the dependencies and whatnot).
+
+## TODO
+* Improve test coverage
+* Persist tweets to a database and implement features like paging and marking tweets as "Read".
+* Investigate Twitter's streaming protocol as well as pushing updates to the browser via Websockets.
