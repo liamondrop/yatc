@@ -12719,6 +12719,9 @@ var _backbone = require('backbone');
 
 var _models = require('../models');
 
+var INTERVAL = 20000;
+var FETCH_AFTER = 60000;
+
 var StatusCollection = _backbone.Collection.extend({
   model: _models.StatusModel,
 
@@ -12731,6 +12734,7 @@ var StatusCollection = _backbone.Collection.extend({
     return '/statuses/' + props.screenName;
   },
   parse: function parse(data) {
+    this.startTimer(data.retrieved_at);
     return data.statuses;
   },
   initialize: function initialize() {
@@ -12738,6 +12742,31 @@ var StatusCollection = _backbone.Collection.extend({
   },
   setProp: function setProp(key, value) {
     this.props[key] = value;
+  },
+
+  // every 10 seconds, fire an interval event
+  // after 60 seconds has elapsed, re-fetch the current collection
+  startTimer: function startTimer(dateStr) {
+    var _this = this;
+
+    var retrievedAt = +new Date(dateStr);
+    this.trigger('timer:start', retrievedAt);
+    var getTimeDelta = function getTimeDelta() {
+      var now = +new Date();
+      var delta = now - retrievedAt;
+      if (delta < FETCH_AFTER) {
+        _this.timerId = setTimeout(getTimeDelta, INTERVAL);
+        _this.trigger('timer:increment', delta);
+      } else {
+        _this.clearTimer();
+        _this.fetch();
+      }
+    };
+    this.timerId = setTimeout(getTimeDelta, INTERVAL);
+  },
+  clearTimer: function clearTimer() {
+    clearTimeout(this.timerId);
+    this.trigger('timer:end', +new Date());
   },
 
   // status lookup public api
@@ -13010,11 +13039,17 @@ var UserLookupView = _backbone.View.extend({
     this.$form = this.$('form');
     this.$input = this.$('input[name="screen-name"]');
     this.$button = this.$('button[type="submit"]');
+    this.$lastUpdate = this.$('#last-update');
+    this.$interval = this.$('#last-update > .interval');
+    this.$event = this.$('#last-update > .event');
   },
   setupEventListeners: function setupEventListeners(collection) {
     this.$form.on('submit', this._onFormSubmit);
     this.listenTo(collection, 'request', this._onCollectionRequest);
     this.listenTo(collection, 'sync error', this._onCollectionComplete);
+    this.listenTo(collection, 'timer:start', this._onTimerStart);
+    this.listenTo(collection, 'timer:increment', this._onTimerIncrement);
+    this.listenTo(collection, 'timer:end', this._onTimerEnd);
   },
   teardownEventListeners: function teardownEventListeners() {
     this.$form.off();
@@ -13035,11 +13070,22 @@ var UserLookupView = _backbone.View.extend({
     this.$el.addClass('working');
     this.$input.prop('disabled', true);
     this.$button.prop('disabled', true);
+    this.$lastUpdate.addClass('in');
+    this.$event.text('Fetching').addClass('in');
   },
   _onCollectionComplete: function _onCollectionComplete() {
     this.$el.removeClass('working');
     this.$input.prop('disabled', false);
     this.$button.prop('disabled', false);
+    this.$event.text('Done');
+  },
+  _onTimerIncrement: function _onTimerIncrement(delta) {
+    var timeAgo = Math.round(delta / 1000) + 's ago';
+    this.$event.text('Last updated');
+    this.$interval.text(timeAgo).addClass('in');
+  },
+  _onTimerEnd: function _onTimerEnd() {
+    this.$interval.removeClass('in');
   }
 });
 
