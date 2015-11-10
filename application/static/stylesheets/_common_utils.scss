@@ -9,11 +9,12 @@
 
 .icon-star {
   &:before {
-    content: "\2606";
+    content: "\2605";
   }
 }
 
 .data {
+  position: relative;
   font-size: 13px;
   color: #888;
 }
