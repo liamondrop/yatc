@@ -26,7 +26,7 @@ This does not, however, appear to be a problem for the purposes of this exercise
 ### Client side
 #### CSS
 * The browser assets live in `application/static`.
-* The stylesheets are written in `scss` and compiled automatically by the server via [Webassets](https://webassets.readthedocs.org/en/latest/)) whenever changes are detected. Unfortunately, Webassets does not seem to be able to follow `@import` statements, so it's necessary to trigger a rebuild manually by changing something in the top level file. Keep in mind that previous builds are being cached in a .webassets-cache folder that is created when you first start the server and navigate to the site. These cached versions will be used if ever your top level file is equal to a previous state (even if other changes are present in your `@imported` files).
+* The stylesheets are written in `scss` and compiled automatically by the server via [Webassets](https://webassets.readthedocs.org/en/latest/) whenever changes are detected. Unfortunately, Webassets does not seem to be able to follow `@import` statements, so it's necessary to trigger a rebuild manually by changing something in the top level file. Keep in mind that previous builds are being cached in a .webassets-cache folder that is created when you first start the server and navigate to the site. These cached versions will be used if ever your top level file is equal to a previous state (even if other changes are present in your `@imported` files).
 
 #### JavaScript
 * The client side application is written in ES2015 syntax using ES2015-style imports/exports.
