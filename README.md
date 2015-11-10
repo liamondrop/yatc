@@ -30,8 +30,9 @@ This does not, however, appear to be a problem for the purposes of this exercise
 
 #### JavaScript
 * The client side application is written in ES2015 syntax using ES2015-style imports/exports.
-* Node package manager is used to manage the dependencies and Browserify/Babelify were used to transpile to ES5 syntax and bundle all the files together.
-* The app should hopefully work out of the box without rebuilding, but if you should need to rebuild, you can simply issue an `npm start` command at the top of the `javascripts` directory (You will need npm installed to pull down the dependencies and whatnot).
+* Node package manager is used to manage the dependencies and trigger Browserify/Babelify transforms and bundle all the modules.
+* The app should hopefully work out of the box without rebuilding, but if you should need to rebuild, you can simply issue an `npm start` command at the top of the `javascripts` directory (You will obviously need npm installed first).
+* Issuing an `npm run uglify` command will minify the built bundle.
 
 ## TODO
 * Improve test coverage.
