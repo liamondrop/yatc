@@ -2,6 +2,9 @@ import {isObject, isString, isEmpty, extend} from 'underscore';
 import {Collection} from 'backbone';
 import {StatusModel} from '../models';
 
+const INTERVAL = 20000;
+const FETCH_AFTER = 60000;
+
 const StatusCollection = Collection.extend({
   model: StatusModel,
 
@@ -16,6 +19,7 @@ const StatusCollection = Collection.extend({
   },
 
   parse(data) {
+    this.startTimer(data.retrieved_at);
     return data.statuses;
   },
 
@@ -25,6 +29,30 @@ const StatusCollection = Collection.extend({
 
   setProp(key, value) {
     this.props[key] = value;
+  },
+
+  // every 10 seconds, fire an interval event
+  // after 60 seconds has elapsed, re-fetch the current collection
+  startTimer(dateStr) {
+    const retrievedAt = +new Date(dateStr);
+    this.trigger('timer:start', retrievedAt);
+    const getTimeDelta = () => {
+      const now = +new Date();
+      const delta = now - retrievedAt;
+      if (delta < FETCH_AFTER) {
+        this.timerId = setTimeout(getTimeDelta, INTERVAL);
+        this.trigger('timer:increment', delta);
+      } else {
+        this.clearTimer();
+        this.fetch();
+      }
+    };
+    this.timerId = setTimeout(getTimeDelta, INTERVAL);
+  },
+
+  clearTimer() {
+    clearTimeout(this.timerId);
+    this.trigger('timer:end', +new Date());
   },
 
   // status lookup public api
