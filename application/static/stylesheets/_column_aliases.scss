@@ -1,9 +1,8 @@
-.col-sidebar {
-  @extend .col-xs-6;
-  @extend .col-xs-offset-3;
-}
-
+.col-sidebar,
 .col-main {
-  @extend .col-xs-6;
-  @extend .col-xs-offset-3;
+  @extend .col-md-8;
+  @extend .col-md-offset-2;
+
+  @extend .col-lg-6;
+  @extend .col-lg-offset-3;
 }
