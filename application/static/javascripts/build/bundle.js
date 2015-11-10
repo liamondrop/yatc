@@ -12826,14 +12826,11 @@ var _backbone = require('backbone');
 
 var StatusModel = _backbone.Model.extend({
   parse: function parse(data) {
-    data.created_at_local = this.getLocalTime(data.created_at);
     data.parsed_text = this.parseText(data.text);
     return data;
   },
-  getLocalTime: function getLocalTime(createdAt) {
-    var d = new Date(createdAt);
-    return d.toLocaleString();
-  },
+
+  // make urls clickable
   parseText: function parseText(text) {
     var pattern = /(http[s]?:\/\/[a-z0-9\.\/]+)/gi;
     return text.replace(pattern, function ($1, match) {
@@ -12871,7 +12868,7 @@ exports.default = statusPanels;
 
 var _underscore = require('underscore');
 
-var statusPanelTemplate = (0, _underscore.template)('\n<div class="panel panel-default">\n  <div class="status-panel">\n    <div class="panel-body">\n      <div class="status-content">\n        <div class="status-header">\n          <a href="https://twitter.com/<%= screen_name %>" target="_blank">\n            <img class="avatar" src="<%= profile_image_url %>">\n            <strong class="fullname"><%= name %></strong>\n            <span class="data screen-name">@<%= screen_name %></span>\n          </a>\n        </div>\n        <p class="tweet-text"><%= parsed_text %></p>\n      </div>\n    </div>\n    <div class="panel-footer status-footer">\n      <div class="status-footer-content">\n        <span class="retweet-count">\n          <strong class="rt-num"><%= retweet_count.toLocaleString() %></strong>\n          <span class="data rt-label">retweet<%= retweet_count === 1 ? \'\' : \'s\' %></span>\n        </span>\n        <span class="data created-at pull-right">\n          <%= created_at_local %>\n        </span>\n      </div>\n    </div>\n  </div>\n</div>\n');
+var statusPanelTemplate = (0, _underscore.template)('\n<div class="panel panel-default">\n  <div class="status-panel">\n    <div class="panel-body">\n      <div class="status-content">\n        <div class="status-header">\n          <a href="https://twitter.com/<%= screen_name %>" target="_blank">\n            <img class="avatar" src="<%= profile_image_url %>">\n            <strong class="fullname"><%= name %></strong>\n            <span class="data screen-name">@<%= screen_name %></span>\n          </a>\n        </div>\n        <p class="tweet-text"><%= parsed_text %></p>\n      </div>\n    </div>\n    <div class="panel-footer status-footer">\n      <div class="status-footer-content">\n        <span class="retweet-count">\n          <strong class="rt-num"><%= retweet_count.toLocaleString() %></strong>\n          <span class="data rt-label">retweet<%= retweet_count === 1 ? \'\' : \'s\' %></span>\n        </span>\n        <span class="data created-at pull-right">\n          <%= created_at_nice %>\n        </span>\n      </div>\n    </div>\n  </div>\n</div>\n');
 
 // accepts a backbone collection or an array of backbone models
 // returns an array of html strings
