@@ -7,7 +7,7 @@ app.debug = True
 
 # initialize Twitter client
 from birdy.twitter import AppClient
-from env import CONSUMER_KEY, CONSUMER_SECRET
+from secret import CONSUMER_KEY, CONSUMER_SECRET
 client = AppClient(CONSUMER_KEY, CONSUMER_SECRET)
 token = client.get_access_token()
 
