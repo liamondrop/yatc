@@ -22,7 +22,7 @@ const statusPanelTemplate = template(`
           <span class="data rt-label">retweet<%= retweet_count === 1 ? '' : 's' %></span>
         </span>
         <span class="data created-at pull-right">
-          <%= created_at_local %>
+          <%= created_at_nice %>
         </span>
       </div>
     </div>
