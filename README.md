@@ -1,10 +1,8 @@
 # Yet Another Twitter Client
 
-Presented for you perusal is a little Twitter client built on top of a Flask server & a Bootstrap front end. The app retrieves the latest 10 tweets from any user's timeline and continues to poll the Twitter API for updates once a minute. There's also a nifty little tool that enables you to quickly filter the currently loaded statuses by the Tweet text.
+Presented for you perusal is a little Twitter app built on top of a Flask server and a Bootstrap front end. The app makes use of the [Birdy](https://github.com/inueni/birdy) Twitter API client to retrieve the latest 10 tweets from any user's timeline, and continues to poll for updates once a minute. There's also a nifty little tool that enables you to quickly filter the currently loaded statuses by the Tweet text.
 
 ## Running the app
-
-The demo webserver has been tested on Node.js v0.10.29 & Python 2.7.5.
 
 ### Server side
 * First, clone this repository and `cd` into the root directory
