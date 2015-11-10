@@ -26,12 +26,12 @@ This does not, however, appear to be a problem for the purposes of this exercise
 ### Client side
 #### CSS
 * The browser assets live in `application/static`.
-* The stylesheets are written in `scss` and built automatically by the server whenever changes are detected. Unfortunately, Webassets does not seem to be able to follow `@import` statements, so it's necessary to trigger a rebuild manually by changing something in the top level file. Keep in mind that previous builds are being cached in a .webassets-cache folder that is created when you first start the server and navigate to the site. These cached versions will be used if ever your top level file is equal to a previous state (even if other changes are present in your `@imported` files).
+* The stylesheets are written in `scss` and compiled automatically by the server via [Webassets](https://webassets.readthedocs.org/en/latest/)) whenever changes are detected. Unfortunately, Webassets does not seem to be able to follow `@import` statements, so it's necessary to trigger a rebuild manually by changing something in the top level file. Keep in mind that previous builds are being cached in a .webassets-cache folder that is created when you first start the server and navigate to the site. These cached versions will be used if ever your top level file is equal to a previous state (even if other changes are present in your `@imported` files).
 
-#### JS
-* The JavaScript is written in ES2015 syntax using ES2015-style imports/exports.
+#### JavaScript
+* The client side application is written in ES2015 syntax using ES2015-style imports/exports.
 * Node package manager is used to manage the dependencies and Browserify/Babelify were used to transpile to ES5 syntax and bundle all the files together.
-* The app should hopefully work out of the box without rebuilding, but if you should need to rebuild, you can simply issue a `npm start` command at the top of the `javascripts` directory (You will need npm installed to pull down the dependencies and whatnot).
+* The app should hopefully work out of the box without rebuilding, but if you should need to rebuild, you can simply issue an `npm start` command at the top of the `javascripts` directory (You will need npm installed to pull down the dependencies and whatnot).
 
 ## TODO
 * Improve test coverage.
