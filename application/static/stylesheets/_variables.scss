@@ -1,0 +1,27 @@
+// correct path to fonts
+$icon-font-path: "/static/fonts/bootstrap/" !default;
+
+// correct for poor decimal precision
+$line-height-base: 1.42858 !default;                  
+
+// some brand colors
+$haze: #e2e9ef;
+$haze-lighter: lighten($haze, 5%);
+$haze-darker: darken($haze, 10%);
+$haze-darkest: darken($haze, 20%);
+
+$dusk: #334350;
+$teal: #26b991;
+
+$body-bg: $haze !default;
+
+$btn-default-bg: $haze-lighter !default;
+$btn-default-border: $haze-darker !default;
+
+$input-border: $haze-darker !default;
+
+$panel-footer-bg: $haze-lighter !default;
+
+$navbar-inverse-bg: $dusk !default;
+
+$brand-success: $teal !default;

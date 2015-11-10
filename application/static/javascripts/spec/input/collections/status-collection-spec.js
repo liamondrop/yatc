@@ -62,7 +62,9 @@ describe('StatusCollection', function () {
           "profile_image_url",
           "retweet_count",
           "screen_name",
-          "text"
+          "text",
+          "created_at_local",
+          "parsed_text"
         ];
         expect(actual).toEqual(expected);
       } else {

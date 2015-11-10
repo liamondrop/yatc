@@ -1,0 +1,29 @@
+.timeline {
+  &.working {
+    .loader {
+      opacity: 1;
+    }
+
+    .panel-group {
+      opacity: 0.5;
+    }
+  }
+
+  &.initial-load {
+    .panel-group {
+      margin-top: 66px;
+    }
+  }
+
+  .loader,
+  .panel-group {
+    transition: opacity 500ms linear, margin 500ms linear;
+  }
+
+  .loader {
+    position: absolute;
+    left: 50%;
+    margin-left: -64px;
+    opacity: 0;
+  }
+}

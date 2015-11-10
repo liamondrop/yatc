@@ -1,0 +1,42 @@
+.avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 3px;
+}
+
+.screen-name {
+  text-decoration: initial;
+}
+
+.fullname {
+  color: #333;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.status-content,
+.status-footer-content {
+  margin-left: 58px;
+}
+
+.status-header {
+  margin-bottom: 15px;
+
+  > a {
+    &:hover {
+      text-decoration: initial;
+    }
+  }
+
+  .avatar {
+    float: left;
+    margin-left: -58px;
+    margin-top: 3px;
+  }
+}
+
+.tweet-text {
+  font-size: 18px;
+}

@@ -6,11 +6,16 @@
       <div class="panel-body">
         <form>
           <div class="form-group no-margin">
-            <label class="sr-only" for="screen-name">User Lookup</label>
+            <label class="control-label" for="screen-name">Timeline Lookup</label>
+            <span id="last-update" class="data" style="display: none">
+              &middot; <span class="data interval">10s</span> ago
+            </span>
             <div class="input-group">
-              <input name="screen-name" type="text" class="form-control" placeholder="Search for...">
+              <input name="screen-name" type="text" class="form-control" placeholder="Enter a screen name to get posts...">
               <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">Search</button>
+                <button class="btn btn-default" type="submit">
+                  <span class="button-spacer">Go</span>
+                </button>
               </span>
             </div>
           </div>
@@ -19,36 +24,23 @@
     </div>
   </div>
 
-  <div id="status-filter" class="col-sidebar">
+  <div id="status-filter" class="col-main">
     <div class="panel panel-default">
       <div class="panel-body">
-        <form>
-          <div class="form-group no-margin">
-            <label class="sr-only" for="screen-name">Status Filter</label>
-            <div class="input-group">
-              <input name="screen-name-lookup" type="text" class="form-control" placeholder="Filter statuses...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="submit">Filter</button>
-              </span>
-            </div>
-          </div>
-        </form>
+        <div class="form-group no-margin">
+          <span id="filter-count" class="data pull-right">
+            <strong class="result">0</strong> of <strong class="total">0</strong>
+          </span>
+          <label class="control-label" for="status-filter">Status Filter</label>
+          <input name="status-filter" type="text" class="form-control" placeholder="Filter statuses...">
+        </div>
       </div>
     </div>
   </div>
 
-  <div id="timeline" class="col-main">
+  <div id="timeline" class="col-main timeline initial-load">
+    <h3 class="loader"><span class="icon-star animate-spin"></span> loading&hellip;</h3>
     <div class="panel-group">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          Basic panel example
-        </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-body">
-          Basic panel example
-        </div>
-      </div>
     </div>
   </div>
 </div>

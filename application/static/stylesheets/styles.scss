@@ -1,11 +1,36 @@
-$icon-font-path: "/fonts/bootstrap/" !default; // correct path to fonts
-$line-height-base: 1.42858 !default;           // correct for poor decimal precision
+/* variables & variable overrides */
+@import "variables";
+
+/* css animations */
+@import "animations";
 
 /* bootstrap styles */
 @import "bootstrap";
 
+/* navbar overrides */
+@import "navbar";
+
+/* panel overrides */
+@import "panels";
+
 /* useful column aliases */
 @import "column_aliases";
 
+/* timeline styles */
+@import "timeline";
+
+/* timeline status styles */
+@import "timeline_status";
+
+/* quick and dirty loading animation */
+@import "loader";
+
 /* useful common utility classes */
 @import "common_utils";
+
+
+
+
+
+
+
